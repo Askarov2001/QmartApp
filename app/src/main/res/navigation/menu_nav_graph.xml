@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_nav_graph"
+    app:startDestination="@id/homeScreen">
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.qmartapp.homePage.HomeFr"
+        android:label="HomeScreen">
+        <action
+            android:id="@+id/action_home_to_products"
+            app:destination="@id/productsScreen">
+            <argument
+                android:name="menuItem"
+                android:defaultValue="@null"
+                app:argType="com.example.qmartapp.homePage.adapter.MenuDisplayItem"
+                app:nullable="true" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/productsScreen"
+        android:name="com.example.qmartapp.productsPage.Productsfr">
+        <argument
+            android:name="menuItem"
+            android:defaultValue="@null"
+            app:argType="com.example.qmartapp.homePage.adapter.MenuDisplayItem"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_product_to_info"
+            app:destination="@id/infoScreen">
+            <argument
+                android:name="productItem"
+                android:defaultValue="@null"
+                app:argType="com.example.qmartapp.productsPage.adapter.ProductsDisplayItem"
+                app:nullable="true" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/basketScreen"
+        android:name="com.example.qmartapp.basketPage.BasketFragment">
+
+        <action
+            android:id="@+id/action_basketScreen_to_orderFragment"
+            app:destination="@id/orderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesScreen"
+        android:name="com.example.qmartapp.favouritesPage.FavouritesFragment"/>
+    <fragment
+        android:id="@+id/profileScreen"
+        android:name="com.example.qmartapp.ProfileFr"/>
+
+    <fragment
+        android:id="@+id/infoScreen"
+        android:name="com.example.qmartapp.infoPage.InfoFragment">
+        <argument
+            android:name="productItem"
+            android:defaultValue="@null"
+            app:argType="com.example.qmartapp.productsPage.adapter.ProductsDisplayItem"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.example.qmartapp.orderPage.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" >
+        <action
+            android:id="@+id/action_orderFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_orderResultFragment"
+            app:destination="@id/orderResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.qmartapp.addressPage.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" >
+        <action
+            android:id="@+id/action_addressFragment_to_orderFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/orderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardDetailFragment"
+        android:name="com.example.qmartapp.cardDetailPage.CardDetailFragment"
+        android:label="fragment_card_detail"
+        tools:layout="@layout/fragment_card_detail" />
+    <fragment
+        android:id="@+id/orderResultFragment"
+        android:name="com.example.qmartapp.orderPage.OrderResultFragment"
+        android:label="fragment_order_result"
+        tools:layout="@layout/fragment_order_result" >
+        <action
+            android:id="@+id/action_orderResultFragment_to_homeScreen"
+            app:destination="@id/homeScreen"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"/>
+    </fragment>
+
+
+</navigation>

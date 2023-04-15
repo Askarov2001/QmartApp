@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".addressPage.AddressFragment">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="Адрес доставки" />
+
+    <LinearLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Город"
+            android:textSize="16sp"
+            android:layout_marginTop="32dp"
+            android:textColor="#6A6A6A"/>
+
+
+        <TextView
+            android:id="@+id/chooseCityTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_r12_ripple"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text=""
+            android:layout_marginTop="10dp"
+            app:drawableEndCompat="@drawable/ic_choose_arrow_down" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Улица и номер дома"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:textColor="#6A6A6A"/>
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/streetHouseEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_r12"
+            android:gravity="center_vertical"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
+            android:padding="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Квартира"
+                    android:textSize="16sp"
+                    android:textColor="#6A6A6A"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/apartmentEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_r12"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:padding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Подъезд"
+                    android:textSize="16sp"
+                    android:textColor="#6A6A6A"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/entranceEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_r12"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:padding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Этаж"
+                    android:textSize="16sp"
+                    android:textColor="#6A6A6A"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/floorEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:imeOptions="actionDone"
+                    android:background="@drawable/shape_r12"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:padding="16dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="96dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/green_btn_bg"
+        android:paddingVertical="14dp"
+        android:text="Добавить новый адрес"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</FrameLayout>
+

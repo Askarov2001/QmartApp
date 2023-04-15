@@ -1,0 +1,61 @@
+<resources>
+
+    <string name="app_name">QmartApp</string>
+    <string name="skip">Пропустить</string>
+    <string name="qmart">qmart</string>
+    <string name="welcome">Добро пожаловать</string>
+    <string name="under_welcome">The best and healthy food store</string>
+    <string name="start_btn">Начать сейчас</string>
+    <string name="sign_in">Создать новый аккаунт</string>
+    <string name="log_in">Войти</string>
+    <string name="help">Продолжить с помощью</string>
+    <string name="reg">Регистрация</string>
+    <string name="reg_info">Электронная почта или телефон</string>
+    <string name="name">Имя</string>
+    <string name="email">Email</string>
+    <string name="phone">Телефон</string>
+    <string name="password">Пароль</string>
+    <string name="sign_in2">Создать аккаунт</string>
+    <string name="old_user">Есть аккаунт?</string>
+    <string name="hello">Здравствуйте</string>
+    <string name="hello_info">Заполните свои данные</string>
+    <string name="new_user">Новый пользователь?</string>
+    <string name="forget_pass">Забыли пароль?</string>
+    <string name="Home">Главная</string>
+    <string name="Basket">Корзина</string>
+    <string name="Favourites">Избранные</string>
+    <string name="Profile">Профиль</string>
+    <string name="search">Поиск</string>
+    <string name="reset_password">Сбросить пароль</string>
+    <string name="send">Отправить</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="products">Продукты</string>
+    <string name="appliances">Бытовая техника</string>
+    <string name="all_for_home">Все для дома</string>
+    <string name="furniture">Мебель</string>
+    <string name="electronic">Электроника</string>
+    <string name="accessories">Аксессуары</string>
+    <string name="sport">Спорт</string>
+    <string name="make_up">Красота</string>
+    <string name="zoo_products">Зоо товары</string>
+    <string name="discount">Скидочные товары</string>
+    <string name="Hello">Привет,</string>
+    <string name="info">Мой данные</string>
+    <string name="user_name">Adlet</string>
+    <string name="user_phone">87006010063</string>
+    <string name="txt_title">Пончики</string>
+    <string name="txt_title2">Очень вкусные пончики к чаю с шоколадной начинкой</string>
+    <string name="txt_title3">alma.kz</string>
+    <string name="money">776kzt</string>
+    <string name="price_kzt">%1$d kzt</string>
+    <string name="donates">Пончики</string>
+    <string name="donates_desc">Очень вкусные пончики к чаю с шоколадной начинкой</string>
+    <string name="alma.kz">alma.kz</string>
+    <string name="to_basket">В корзину</string>
+    <string name="information">Информация</string>
+    <string name="to_pay">Перейти к оплате</string>
+    <string name="comment">Коментарий</string>
+    <string name="card_add_agreement">Добавляя новую карту, вы соглашаетесь с условиями <u>кредитной/дебетовой карты.</u></string>
+
+</resources>
