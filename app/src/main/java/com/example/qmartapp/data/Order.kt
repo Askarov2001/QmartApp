@@ -1,8 +1,11 @@
 package com.example.qmartapp.data
 
-data class Order (
+import java.util.UUID
+
+
+data class Order(
     val products: List<OrderProduct>? = null,
-    val address: ClientAddress? = null,
+    val address: String? = null,
     val date: String? = null,
     val time: String? = null,
     val clientName: String? = null,
@@ -11,7 +14,8 @@ data class Order (
     val productsCost: Int? = null,
     val deliveryCost: Int? = null,
     val tipCost: Int = 0,
-    val totalCost: Int? = null
+    val totalCost: Int? = null,
+    val id: String = UUID.randomUUID().toString()
 )
 
 data class OrderProduct(

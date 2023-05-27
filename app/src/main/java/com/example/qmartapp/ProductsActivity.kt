@@ -31,29 +31,5 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     private fun prepareProductListData() {
-        var product = Product("Avatar","Adlet","Super", R.drawable.products)
-        productList.add(product)
-        product = Product("Batman","Adlet","Super", R.drawable.phone)
-        productList.add(product)
-
-        product = Product("End Game","Adlet","Super", R.drawable.all_for_home)
-        productList.add(product)
-        product = Product("Hulk","Adlet","Super", R.drawable.appliances)
-        productList.add(product)
-        product = Product("End Game","Adlet","Super", R.drawable.products)
-        productList.add(product)
-        product = Product("Hulk","Adlet","Super", R.drawable.make_up)
-        productList.add(product)
-        product = Product("End Game","Adlet","Super", R.drawable.electronic)
-        productList.add(product)
-        product = Product("Hulk","Adlet","Super", R.drawable.furniture)
-        productList.add(product)
-        product = Product("End Game","Adlet","Super", R.drawable.all_for_home)
-        productList.add(product)
-        product = Product("Hulk","Adlet","Super", R.drawable.zoo)
-        productList.add(product)
-
-        recyclerViewProductAdapter!!.notifyDataSetChanged()
-
     }
 }

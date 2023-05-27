@@ -13,6 +13,8 @@ class OrderViewModel : ViewModel(), KoinComponent {
     val orderLiveData: LiveData<Order?>
         get() = orderMutableLiveData
 
+    var total = 0
+
     init {
         orderMutableLiveData.value = Order()
     }
@@ -22,23 +24,25 @@ class OrderViewModel : ViewModel(), KoinComponent {
     }
 
     fun setProductsCost(cost: Int) {
-        setOrder(orderMutableLiveData.value?.copy(
-            productsCost = cost
-        ))
+        setOrder(
+            orderMutableLiveData.value?.copy(
+                productsCost = cost
+            )
+        )
     }
 
-    fun recalculateAmount(){
+    fun recalculateAmount() {
         var totalCost = 0
         totalCost += orderMutableLiveData.value?.productsCost ?: 0
         totalCost += orderMutableLiveData.value?.deliveryCost ?: 0
         totalCost += orderMutableLiveData.value?.tipCost ?: 0
-        setOrder(orderMutableLiveData.value?.copy(
-            totalCost = totalCost
-        ))
+        setOrder(
+            orderMutableLiveData.value?.copy(
+                totalCost = totalCost
+            )
+        )
+        total = totalCost
     }
-
-
-
 
 
 }

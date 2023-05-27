@@ -24,6 +24,13 @@ class BasketRepository(private val dao: BasketDao) {
         }
     }
 
+    suspend fun updateCount(id: String, count: Int) {
+        val item = dao.getById(id)
+        item?.let {
+            dao.updateCount(id, count)
+        }
+    }
+
     suspend fun add(item: BasketEntity): Boolean {
         if (dao.getById(item.id) != null) {
             return false

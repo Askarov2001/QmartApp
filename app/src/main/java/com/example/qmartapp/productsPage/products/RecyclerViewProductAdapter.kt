@@ -26,10 +26,6 @@ class RecyclerViewProductAdapter constructor(private val getActivity: ProductsAc
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.Title.text = productList[position].title
-        holder.Title2.text = productList[position].title2
-        holder.Title3.text = productList[position].title3
-        holder.cardImg.setImageResource(productList[position].image)
 
     }
 

@@ -17,6 +17,7 @@ import com.example.qmartapp.di.appModule
 import com.example.qmartapp.homePage.HomeFr
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -52,6 +53,10 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
+    private val auth by lazy {
+        FirebaseAuth.getInstance()
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +83,9 @@ class MenuActivity : AppCompatActivity() {
                 navController.navigate(item.itemId, null, options)
                 true
             } else false
+        }
+        auth.addAuthStateListener {
+            val uid = it.currentUser?.uid
         }
         bottomNavigation.setOnItemReselectedListener { }
     }

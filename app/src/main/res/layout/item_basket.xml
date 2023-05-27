@@ -20,13 +20,12 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
         android:layout_marginStart="24dp"
+        android:src="@drawable/accessories"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="4dp"
-        android:minWidth="105dp"
-        android:minHeight="105dp"
         app:layout_constraintEnd_toStartOf="@id/deleteBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

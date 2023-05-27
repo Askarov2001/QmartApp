@@ -9,7 +9,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
 class LogActivity : AppCompatActivity() {
@@ -65,6 +67,9 @@ class LogActivity : AppCompatActivity() {
             } else {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        val result = it.result.user?.zzb()
+                        val token = it.result.additionalUserInfo?.providerId
+                        val ss = it.result.additionalUserInfo.toString()
                         val Intent = Intent(this, MenuActivity::class.java)
                         startActivity(Intent)
                     } else {

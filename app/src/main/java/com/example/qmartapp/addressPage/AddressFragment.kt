@@ -20,14 +20,8 @@ class AddressFragment : Fragment(R.layout.fragment_address) {
     private var selectedCity = EMPTY
 
     private val binding: FragmentAddressBinding by viewBinding()
-
-    companion object {
-        fun newInstance() = AddressFragment()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setToolbar()
         setUI()
     }

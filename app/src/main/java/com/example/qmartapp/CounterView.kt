@@ -24,12 +24,14 @@ class CounterView @JvmOverloads constructor(
         minusView = root.findViewById<ImageView>(R.id.minus)
         plusView.setOnClickListener {
             count++
+            root.callOnClick()
         }
         minusView.setOnClickListener {
             count--
             if (count < 1) {
                 count = 1
             }
+            root.callOnClick()
         }
     }
 

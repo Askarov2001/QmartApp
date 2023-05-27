@@ -42,6 +42,9 @@ class BasketAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 image.setImageResource(item.image)
                 count.text = "1 шт"
                 counter.count = item.count
+                counter.setOnClickListener {
+                    listener?.onCounterClick(item.id,counter.count)
+                }
                 deleteBtn.setOnClickListener {
                     listener?.onDelete(item.id)
                 }

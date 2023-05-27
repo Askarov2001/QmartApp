@@ -96,4 +96,25 @@ class BasketViewModel(private val repository: BasketRepository) : ViewModel(), K
             }
         }
     }
+
+    fun updateItem(id: String, count: Int) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                repository.updateCount(id, count)
+                getAll()
+            }
+        }
+    }
+
+    fun deleteAll() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                (repository.getAll() as ArrayList<BasketEntity>).also {
+                    it.forEach {
+                        repository.deleteItem(it.id)
+                    }
+                }
+            }
+        }
+    }
 }

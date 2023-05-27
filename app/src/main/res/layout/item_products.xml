@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_orange_rounded_10"
     android:clickable="true"
-    android:focusable="true"
-    android:background="@drawable/bg_orange_rounded_10">
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/rateImage"
@@ -35,6 +35,7 @@
         android:layout_height="80dp"
         android:layout_marginHorizontal="38dp"
         android:layout_marginTop="7dp"
+        android:maxHeight="80dp"
         android:src="@drawable/electronic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -102,13 +103,13 @@
         android:id="@+id/addBtn"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_plus"
         android:layout_marginEnd="13dp"
-        android:padding="6dp"
-        android:clickable="true"
-        android:focusable="true"
         android:layout_marginBottom="12dp"
         android:background="@drawable/bg_orange_round"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="6dp"
+        android:src="@drawable/ic_plus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

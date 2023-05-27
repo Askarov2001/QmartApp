@@ -24,6 +24,7 @@ class BasketFragment : BaseFragment(R.layout.fragment_basket) {
             listener = adapterListener
         }
     }
+    private var sum = 0
     private val binding: FragmentBasketBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,12 +41,8 @@ class BasketFragment : BaseFragment(R.layout.fragment_basket) {
                 basketList.adapter = adapter
             }
             toPayButton.setOnClickListener {
-                var productsSum = 0
-                viewModel.items.value.forEach {
-                    productsSum+=it.price
-                }
                 val bundle = Bundle()
-                bundle.putInt("sum", productsSum)
+                bundle.putInt("sum", sum)
                 navController?.navigate(R.id.action_basketScreen_to_orderFragment, bundle)
             }
         }
@@ -57,6 +54,10 @@ class BasketFragment : BaseFragment(R.layout.fragment_basket) {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.items.collect {
                     adapter.list = it
+                    it.forEach {
+                        sum += (it.price * it.count)
+                    }
+
                 }
             }
         }
@@ -66,6 +67,11 @@ class BasketFragment : BaseFragment(R.layout.fragment_basket) {
         override fun onDelete(id: String) {
             viewModel.deleteItem(id)
         }
+
+        override fun onCounterClick(id: String, count: Int) {
+            viewModel.updateItem(id, count)
+        }
+
 
     }
 }
