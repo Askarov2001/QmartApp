@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.qmartapp.R
 import com.example.qmartapp.base.database.BasketEntity
 import com.example.qmartapp.base.database.FavouritesEntity
@@ -41,7 +42,9 @@ class FavAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.apply {
                 name.text = item.name
                 price.text = binding.root.context.getString(R.string.price_kzt, item.price)
-                image.setImageResource(item.image)
+                Glide.with(root.context)
+                    .load(item.image)
+                    .into(image)
                 count.text = "${item.count} шт"
                 deleteBtn.setOnClickListener {
                     listener?.onDelete(item.id)

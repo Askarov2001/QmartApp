@@ -17,7 +17,8 @@ val appModule = module {
             get(),
             AppDatabase::class.java,
             "app.db"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
     }
     single { get<AppDatabase>().favouriteDao() }
     single { get<AppDatabase>().basketDao() }

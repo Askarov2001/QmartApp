@@ -4,12 +4,12 @@ import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import kotlinx.parcelize.Parcelize
 import java.util.UUID
+
 @Parcelize
 data class ProductsDisplayItem(
     val rate: Double?,
     val discount: Int?,
-    @DrawableRes
-    val image: Int,
+    val image: String?,
     val title: String,
     val subTitle: String,
     val price: Int,
@@ -17,4 +17,4 @@ data class ProductsDisplayItem(
     val onClick: (ProductsDisplayItem) -> Unit,
     val id: String = UUID.randomUUID().toString(),
     val addAction: (ProductsDisplayItem) -> Unit
-):Parcelable
+) : Parcelable

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "favourites")
 data class FavouritesEntity(
     @PrimaryKey val id: String,
-    val image: Int,
+    val image: String?,
     val name: String,
     val price: Int,
     val count: Int

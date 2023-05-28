@@ -9,9 +9,10 @@ data class Product(
     val category: String,
     val description: String,
     val cost: Int,
-    val status: String?
+    val status: String?,
+    val images: String?
 ) {
-    constructor() : this("", "", "", "", 1, null)
+    constructor() : this("", "", "", "", 1, null, null)
 }
 
 enum class Categories(val nameRes: Int) {

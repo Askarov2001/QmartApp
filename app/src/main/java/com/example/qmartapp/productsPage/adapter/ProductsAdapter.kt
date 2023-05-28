@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.qmartapp.R
 import com.example.qmartapp.databinding.ItemProductsBinding
 import kotlinx.android.extensions.LayoutContainer
@@ -40,7 +41,9 @@ class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.apply {
                 title.text = item.title
                 description.text = item.subTitle
-                image.setImageResource(item.image)
+                Glide.with(root.context)
+                    .load(item.image)
+                    .into(image)
                 rateImage.isVisible = item.rate != null
                 rate.isVisible = item.rate != null
                 rate.text = item.rate.toString()

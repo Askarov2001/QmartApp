@@ -70,7 +70,7 @@ class Productsfr : BaseFragment(R.layout.fragment_products) {
                         ProductsDisplayItem(
                             4.8,
                             null,
-                            R.drawable.electronic,
+                            product.images,
                             product.name,
                             product.description,
                             product.cost,

@@ -86,6 +86,7 @@ class MenuActivity : AppCompatActivity() {
         }
         auth.addAuthStateListener {
             val uid = it.currentUser?.uid
+            sp.addProperty(SharedPref.UID,uid)
         }
         bottomNavigation.setOnItemReselectedListener { }
     }

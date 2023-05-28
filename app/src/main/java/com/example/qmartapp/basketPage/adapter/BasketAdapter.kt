@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.qmartapp.R
 import com.example.qmartapp.base.database.BasketEntity
 import com.example.qmartapp.databinding.ItemBasketBinding
@@ -39,11 +40,13 @@ class BasketAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.apply {
                 name.text = item.name
                 price.text = binding.root.context.getString(R.string.price_kzt, item.price)
-                image.setImageResource(item.image)
+                Glide.with(root.context)
+                    .load(item.image)
+                    .into(image)
                 count.text = "1 шт"
                 counter.count = item.count
                 counter.setOnClickListener {
-                    listener?.onCounterClick(item.id,counter.count)
+                    listener?.onCounterClick(item.id, counter.count)
                 }
                 deleteBtn.setOnClickListener {
                     listener?.onDelete(item.id)

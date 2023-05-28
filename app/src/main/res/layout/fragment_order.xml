@@ -10,12 +10,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="Оформление заказа"
+        android:gravity="center_horizontal"
+        android:navigationIcon="@drawable/ic_delete"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:navigationIcon="@drawable/ic_delete"/>
+        android:title="Оформление заказа" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -49,9 +49,9 @@
                 android:id="@+id/addressLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:orientation="vertical"
                 android:visibility="gone"
-                android:layout_marginTop="16dp"
                 tools:visibility="invisible">
 
                 <TextView
@@ -59,93 +59,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Проспект Абылай хана 1/1"
-                    android:textSize="16sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Текущий адрес доставки"
-                    android:textSize="13sp"
-                    android:textColor="#FF8126" />
+                    android:textColor="#FF8126"
+                    android:textSize="13sp" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="20dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:drawableEnd="@drawable/ic_arrow_forward"
-                android:text="Дата доставки"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/dateChipGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:singleLine="true"
-                    app:singleSelection="true"
-                    app:selectionRequired="true">
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="7 февраля"
-                        android:textColor="@color/white"
-                        android:visibility="gone"
-                        app:chipBackgroundColor="@color/orange"
-                        app:chipCornerRadius="10dp"
-                        tools:visibility="visible" />
-                </com.google.android.material.chip.ChipGroup>
-
-            </HorizontalScrollView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Время доставки"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/timeChipGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:singleLine="true"
-                    app:singleSelection="true"
-                    app:selectionRequired="true">
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="08:00 - 10:00"
-                        android:textColor="@color/white"
-                        android:visibility="gone"
-                        app:chipBackgroundColor="@color/orange"
-                        app:chipCornerRadius="10dp"
-                        tools:visibility="visible" />
-                </com.google.android.material.chip.ChipGroup>
-            </HorizontalScrollView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -187,97 +111,14 @@
                     android:id="@+id/commentEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/comment" />
+                    android:hint="@string/phone" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Оплата"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/chooseCardTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
-                android:drawableEnd="@drawable/ic_arrow_forward"
-                android:paddingEnd="18dp"
-                android:text="Оплата банковской картой"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:background="@android:color/darker_gray" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:orientation="horizontal"
-                android:paddingEnd="18dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="Потратить бонусы"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:theme="@style/SwitchCompatTheme"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Чаевые курьеру"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/tipsChipGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:singleLine="true"
-                    app:singleSelection="true"
-                    app:selectionRequired="true" >
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0 тг"
-                        app:chipCornerRadius="10dp"
-                        android:visibility="gone"
-                        tools:visibility="visible"/>
-
-                </com.google.android.material.chip.ChipGroup>
-            </HorizontalScrollView>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <include layout="@layout/order_bottom_sheet"/>
+    <include layout="@layout/order_bottom_sheet" />
 
 </FrameLayout>

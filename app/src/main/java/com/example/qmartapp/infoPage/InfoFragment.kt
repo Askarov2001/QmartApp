@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
 import com.example.qmartapp.R
 import com.example.qmartapp.base.BaseFragment
 import com.example.qmartapp.basketPage.BasketViewModel
@@ -39,7 +40,9 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
             if (args.productItem != null) {
                 val product = args.productItem!!
                 favoutitesViewModel.isFav(product.id)
-                image.setImageResource(product.image)
+                Glide.with(this@InfoFragment)
+                    .load(product.image)
+                    .into(image)
                 name.text = product.title
                 description.text = product.subTitle
                 rate.text = product.rate.toString()

@@ -37,5 +37,6 @@ class SharedPref {
     companion object {
         const val NAME = "NAME"
         const val PHONE = "PHONE"
+        const val UID = "UID"
     }
 }

@@ -10,7 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.qmartapp.MenuActivity
 import com.example.qmartapp.R
+import com.example.qmartapp.SharedPref
 import com.example.qmartapp.addressPage.AddressFragment
 import com.example.qmartapp.base.database.BasketEntity
 import com.example.qmartapp.basketPage.BasketViewModel
@@ -41,9 +43,6 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
     private var productsSum = 0
     private val products: ArrayList<OrderProduct> = ArrayList()
     private var deliveryCost = 700
-    private var tipCost = 0
-    private var selectedDay: String = ""
-    private var selectedTime: String = ""
 
     private lateinit var clientAddress: ClientAddress
 
@@ -57,13 +56,15 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setChipGroups()
+        viewModel.setDeliveryCost(700)
+        viewModel.setProductsCost(productsSum)
         setToolbar()
         setBottomSheet()
         basketViewModel.getAll()
         observeViewModel()
-        recalculateAmount()
+        binding.nameEditText.setText((requireActivity() as MenuActivity).getValue(SharedPref.NAME))
+        binding.commentEditText.setText((requireActivity() as MenuActivity).getValue(SharedPref.PHONE))
+
 
         val address: ClientAddress? = arguments?.getParcelable("address")
         if (address != null) {
@@ -74,10 +75,6 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         binding.chooseAddressTextView.setOnClickListener {
             findNavController().navigate(R.id.action_orderFragment_to_addressFragment)
             //fragment.show(parentFragmentManager, "Dialog")
-        }
-
-        binding.chooseCardTextView.setOnClickListener {
-            findNavController().navigate(R.id.action_orderFragment_to_cardDetailFragment)
         }
     }
 
@@ -90,13 +87,7 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
 
 
     private fun setBottomSheet() = with(binding) {
-        //viewModel.setProductsCost(productsSum)
-        //viewModel.setDeliveryCost(700)
-        recalculateAmount()
-
         bottomSheetBinding = OrderBottomSheetBinding.bind(binding.root)
-
-        //println(tipsChipGroup.checkedChipId)
 
         viewModel.orderLiveData.observe(viewLifecycleOwner) {
             with(bottomSheetBinding) {
@@ -106,7 +97,6 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
                 it?.deliveryCost?.let {
                     deliveryCostTextView.text = "$it т"
                 }
-                tipsCostTextView.text = "${it?.tipCost} т"
                 viewModel.total.let {
                     totalCostTextView.text = "$it т"
                 }
@@ -117,14 +107,11 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
             val order = Order(
                 productsCost = productsSum,
                 deliveryCost = deliveryCost,
-                tipCost = tipCost,
                 products = products,
                 address = clientAddress.streetHouse,
-                totalCost = viewModel.total,
+                totalCost = productsSum + deliveryCost,
                 clientName = nameEditText.text.toString(),
-                comment = commentEditText.text.toString(),
-                date = selectedDay,
-                time = selectedTime
+                phone = commentEditText.text.toString(),
             )
             viewModel.setOrder(order)
             writeNewOrderToDb(order)
@@ -134,10 +121,6 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
 
     }
 
-    private fun recalculateAmount() {
-        viewModel.recalculateAmount()
-    }
-
     private fun observeViewModel() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -145,12 +128,14 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
                     var sum = 0
                     it.forEach {
                         productsSum += (it.price * it.count)
+                        viewModel.setProductsCost(productsSum)
                         products.add(OrderProduct(it.name, it.image, it.count, it.price))
+                        bottomSheetBinding.totalCostTextView.text =
+                            "${productsSum + deliveryCost} т"
                     }
                 }
             }
         }
-        recalculateAmount()
     }
 
     private fun setToolbar() = with(binding) {
@@ -158,81 +143,6 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
 
         toolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
-        }
-    }
-
-    private fun setChipGroups() = with(binding) {
-        val calendar = Calendar.getInstance()
-        val formatter = SimpleDateFormat("d MMMM", Locale("ru"))
-        val current = formatter.format(calendar.time)
-        var nextDay: String
-
-        nextDay = current
-        repeat(7) {
-            val dateChip = layoutInflater.inflate(
-                R.layout.item_chip,
-                binding.dateChipGroup,
-                false
-            ) as Chip
-            dateChipGroup.addView(dateChip.apply {
-                text = nextDay
-                setOnClickListener {
-                    selectedDay = nextDay
-                }
-            })
-            if (it == 0) {
-                dateChipGroup.check(dateChip.id)
-                selectedDay = nextDay
-            }
-            calendar.add(Calendar.DATE, 1)
-            nextDay = formatter.format(calendar.time)
-        }
-
-        val timePeriods = mutableListOf<String>()
-        var nowHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-        while (nowHour in 8..20) {
-            if (nowHour % 2 == 0) {
-                ++nowHour
-            }
-            timePeriods.add("${++nowHour}:00 - ${nowHour + 2}:00")
-            nowHour++
-        }
-
-        timePeriods.forEachIndexed { index, element ->
-            val timeChip = layoutInflater.inflate(
-                R.layout.item_chip,
-                binding.timeChipGroup,
-                false
-            ) as Chip
-            timeChipGroup.addView(timeChip.apply {
-                text = element
-                setOnClickListener {
-                    selectedTime = element
-                }
-            })
-            if (index == 0) {
-                timeChipGroup.check(timeChip.id)
-                selectedTime = element
-            }
-        }
-
-        val tipList = listOf(0, 200, 400, 500, 600, 700)
-        tipList.forEachIndexed { index, element ->
-            val tipChip = layoutInflater.inflate(
-                R.layout.item_chip,
-                binding.tipsChipGroup,
-                false
-            ) as Chip
-            tipsChipGroup.addView(tipChip.apply {
-                text = "$element т"
-                setOnClickListener {
-                    tipCost = element
-                    recalculateAmount()
-                }
-            })
-            if (index == 0) {
-                tipsChipGroup.check(tipChip.id)
-            }
         }
     }
 
