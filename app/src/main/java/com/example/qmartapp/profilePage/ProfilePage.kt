@@ -1,5 +1,6 @@
 package com.example.qmartapp.profilePage
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
@@ -7,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.qmartapp.MenuActivity
 import com.example.qmartapp.R
 import com.example.qmartapp.SharedPref
+import com.example.qmartapp.SignActivity
 import com.example.qmartapp.base.BaseFragment
 import com.example.qmartapp.databinding.FragmentProfileBinding
 import com.google.firebase.database.DatabaseReference
@@ -40,6 +42,13 @@ class ProfilePage : BaseFragment(R.layout.fragment_profile) {
             }
             phoneEd.addTextChangedListener {
                 pathUser.child("phone").setValue(it.toString())
+            }
+
+            deleteBtn.setOnClickListener {
+                val Intent = Intent(requireActivity(), SignActivity ::class.java)
+                pathUser.removeValue().addOnSuccessListener {
+                    startActivity(Intent)
+                }
             }
         }
     }

@@ -73,8 +73,6 @@ class LogActivity : AppCompatActivity() {
                         val Intent = Intent(this, MenuActivity::class.java)
                         startActivity(Intent)
                     } else {
-                        val Intent = Intent(this, MenuActivity::class.java)
-                        startActivity(Intent)
                         Toast.makeText(this, "Ошибка! Повторите еще раз!", Toast.LENGTH_SHORT)
                             .show()
                     }
