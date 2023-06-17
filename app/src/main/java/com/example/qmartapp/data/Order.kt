@@ -11,12 +11,15 @@ data class Order(
     val productsCost: Int? = null,
     val deliveryCost: Int? = null,
     val totalCost: Int? = null,
-    val id: String = UUID.randomUUID().toString()
+    val id: String = UUID.randomUUID().toString(),
+    val isTaken: Boolean = false,
+    val sellers: String = ""
 )
 
 data class OrderProduct(
     val name: String,
     val image: String?,
     val count: Int,
-    val price: Int
+    val price: Int,
+    val sellerId: String?
 )

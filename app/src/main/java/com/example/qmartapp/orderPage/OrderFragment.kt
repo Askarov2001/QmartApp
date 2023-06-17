@@ -104,6 +104,10 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         }
 
         bottomSheetBinding.toPayButton.setOnClickListener {
+            var sellers: String = ""
+            products.forEach {
+                sellers += it.sellerId
+            }
             val order = Order(
                 productsCost = productsSum,
                 deliveryCost = deliveryCost,
@@ -112,6 +116,7 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
                 totalCost = productsSum + deliveryCost,
                 clientName = nameEditText.text.toString(),
                 phone = commentEditText.text.toString(),
+                sellers = sellers
             )
             viewModel.setOrder(order)
             writeNewOrderToDb(order)
@@ -129,7 +134,15 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
                     it.forEach {
                         productsSum += (it.price * it.count)
                         viewModel.setProductsCost(productsSum)
-                        products.add(OrderProduct(it.name, it.image, it.count, it.price))
+                        products.add(
+                            OrderProduct(
+                                it.name,
+                                it.image,
+                                it.count,
+                                it.price,
+                                it.sellerId
+                            )
+                        )
                         bottomSheetBinding.totalCostTextView.text =
                             "${productsSum + deliveryCost} т"
                     }

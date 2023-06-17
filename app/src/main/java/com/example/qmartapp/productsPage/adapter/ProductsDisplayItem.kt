@@ -16,5 +16,6 @@ data class ProductsDisplayItem(
     val merchant: String?,
     val onClick: (ProductsDisplayItem) -> Unit,
     val id: String = UUID.randomUUID().toString(),
-    val addAction: (ProductsDisplayItem) -> Unit
+    val addAction: (ProductsDisplayItem) -> Unit,
+    val sellerId: String? = null
 ) : Parcelable

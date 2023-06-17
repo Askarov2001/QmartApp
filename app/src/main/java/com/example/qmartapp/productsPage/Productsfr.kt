@@ -15,7 +15,6 @@ import com.example.qmartapp.productsPage.adapter.ProductsAdapter
 import com.example.qmartapp.productsPage.adapter.ProductsDisplayItem
 import com.example.qmartapp.productsPage.adapter.ProductsItemDecorator
 import com.example.qmartapp.productsPage.products.Product
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -66,24 +65,27 @@ class Productsfr : BaseFragment(R.layout.fragment_products) {
             it.children.forEach {
                 val product = (it.getValue(Product::class.java))
                 product?.let { product ->
-                    products.add(
-                        ProductsDisplayItem(
-                            4.8,
-                            null,
-                            product.images,
-                            product.name,
-                            product.description,
-                            product.cost,
-                            null,
-                            {
-                                navigateToInfo(it)
-                            },
-                            product.id,
-                            {
-                                addToBasket(it)
-                            }
+                    if (product.status == "ACTIVE") {
+                        products.add(
+                            ProductsDisplayItem(
+                                4.8,
+                                null,
+                                product.images,
+                                product.name,
+                                product.description,
+                                product.cost,
+                                product.merchant,
+                                {
+                                    navigateToInfo(it)
+                                },
+                                product.id,
+                                {
+                                    addToBasket(it)
+                                },
+                                product.sellerId
+                            )
                         )
-                    )
+                    }
                 }
             }
             Log.d("SHAPSHO", products.toString())

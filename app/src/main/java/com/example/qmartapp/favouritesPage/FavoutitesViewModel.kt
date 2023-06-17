@@ -41,7 +41,8 @@ class FavoutitesViewModel(private val repository: FavouritesRepository) : ViewMo
                         item.image,
                         item.title,
                         item.price,
-                        1
+                        1,
+                        item.sellerId
                     )
                 )
             }
@@ -68,10 +69,10 @@ class FavoutitesViewModel(private val repository: FavouritesRepository) : ViewMo
         }
     }
 
-    fun addOrDelete(isFav:Boolean,item: ProductsDisplayItem){
-        if(isFav){
+    fun addOrDelete(isFav: Boolean, item: ProductsDisplayItem) {
+        if (isFav) {
             addToFav(item)
-        }else{
+        } else {
             deleteItem(item.id)
         }
     }

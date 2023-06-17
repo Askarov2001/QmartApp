@@ -55,7 +55,8 @@ class BasketViewModel(private val repository: BasketRepository) : ViewModel(), K
                         item.title,
                         item.image,
                         count,
-                        item.price
+                        item.price,
+                        item.sellerId
                     )
                 )
             }
@@ -75,7 +76,8 @@ class BasketViewModel(private val repository: BasketRepository) : ViewModel(), K
                         item.name,
                         item.image,
                         1,
-                        item.price
+                        item.price,
+                        item.sellerId
                     )
                 )
                 if (!result) {

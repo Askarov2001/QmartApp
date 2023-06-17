@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.qmartapp.R
 import com.example.qmartapp.databinding.ItemProductsBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.extensions.LayoutContainer
 
 class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -54,6 +57,7 @@ class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 addBtn.setOnClickListener {
                     item.addAction.invoke(item)
                 }
+                merchant.text = item.merchant
             }
         }
     }

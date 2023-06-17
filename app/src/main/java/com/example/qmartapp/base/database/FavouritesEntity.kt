@@ -9,5 +9,6 @@ data class FavouritesEntity(
     val image: String?,
     val name: String,
     val price: Int,
-    val count: Int
+    val count: Int,
+    val sellerId: String?
 )
