@@ -10,11 +10,16 @@ class ChoiceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choice)
 
-        val signBtn = findViewById<Button>(R.id.button)
+        val signUpBtn = findViewById<Button>(R.id.button)
+        val signIn = findViewById<Button>(R.id.button2)
 //        val logBtn = findViewById<Button>(R.id.button2)
 
-        signBtn.setOnClickListener {
-            val Intent = Intent(this, SignActivity ::class.java)
+        signUpBtn.setOnClickListener {
+            val Intent = Intent(this, SignActivity::class.java)
+            startActivity(Intent)
+        }
+        signIn.setOnClickListener {
+            val Intent = Intent(this, LogActivity::class.java)
             startActivity(Intent)
         }
 

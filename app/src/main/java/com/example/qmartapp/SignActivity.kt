@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputLayout
@@ -37,12 +38,17 @@ class SignActivity : AppCompatActivity() {
         val sign_Password: EditText = findViewById(R.id.sign_Password)
         val sign_PasswordLayout: TextInputLayout = findViewById(R.id.sign_PasswordLayout)
         val signup_btn: Button = findViewById(R.id.signup_btn)
+        val back: ImageView = findViewById(R.id.back)
 
         val logNow: TextView = findViewById(R.id.logNow)
 
         logNow.setOnClickListener {
             val Intent = Intent(this, LogActivity::class.java)
             startActivity(Intent)
+        }
+
+        back.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
 
         signup_btn.setOnClickListener {

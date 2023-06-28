@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.qmartapp.base.database.dao.BasketDao
 import com.example.qmartapp.base.database.dao.FavouriteDao
 
-@Database(entities = [FavouritesEntity::class, BasketEntity::class], version = 2)
+@Database(entities = [FavouritesEntity::class, BasketEntity::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun basketDao(): BasketDao

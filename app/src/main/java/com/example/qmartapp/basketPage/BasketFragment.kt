@@ -11,8 +11,6 @@ import com.example.qmartapp.R
 import com.example.qmartapp.base.BaseFragment
 import com.example.qmartapp.basketPage.adapter.BasketAdapter
 import com.example.qmartapp.basketPage.adapter.BasketAdapterListener
-import com.example.qmartapp.basketPage.adapter.FavAdapter
-import com.example.qmartapp.basketPage.adapter.FavAdapterListener
 import com.example.qmartapp.databinding.FragmentBasketBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,7 +23,9 @@ class BasketFragment : BaseFragment(R.layout.fragment_basket) {
         }
     }
     private var sum = 0
+
     private val binding: FragmentBasketBinding by viewBinding()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,6 +62,7 @@ class BasketFragment : BaseFragment(R.layout.fragment_basket) {
             }
         }
     }
+
 
     private val adapterListener = object : BasketAdapterListener {
         override fun onDelete(id: String) {

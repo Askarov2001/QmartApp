@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
@@ -29,6 +30,7 @@ class LogActivity : AppCompatActivity() {
         val log_Password: EditText = findViewById(R.id.log_Password)
         val log_PasswordLayout: TextInputLayout = findViewById(R.id.log_PasswordLayout)
         val loginbtn: Button = findViewById(R.id.loginbtn)
+        val back: ImageView = findViewById(R.id.back)
 
         val forgetPass: TextView = findViewById(R.id.forgetPass)
         val signNow: TextView = findViewById(R.id.signNow)
@@ -36,6 +38,9 @@ class LogActivity : AppCompatActivity() {
         signNow.setOnClickListener {
             val Intent = Intent(this, SignActivity::class.java)
             startActivity(Intent)
+        }
+        back.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
 
         forgetPass.setOnClickListener {

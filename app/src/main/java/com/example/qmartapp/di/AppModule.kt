@@ -27,5 +27,4 @@ val appModule = module {
     single { FavouritesRepository(get()) }
     viewModel { FavoutitesViewModel(get()) }
     viewModel { OrderViewModel() }
-
 }
